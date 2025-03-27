@@ -4,3 +4,6 @@ The date or year was described with either BCE or CE, but in order to use machin
 
 ----------
 
+
+accuracy = 0.011
+
