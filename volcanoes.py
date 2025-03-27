@@ -2,6 +2,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.preprocessing import LabelEncoder 
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+
 
 df = pd.read_csv('The_Volcanoes_Of_Earth.csv')
 
@@ -27,7 +30,6 @@ def unique_values_count(df, column_name):
 
 def unique_values(df, column_name):
    return df[column_name].unique()
-
 
 le = LabelEncoder()   
 
@@ -80,3 +82,9 @@ plt.show()
 
 sns.pairplot(df)
 plt.show()
+
+features_vectors = df['Volcano_Type','Summit_and_Elevatiuon']
+target_vector = df['Last_Eruption']
+
+X_train, X_test, y_train, y_test = train_test_split(features_vectors,target_vector,test_size = 0.2, random_state = 42)
+rf  = RandomForestClassifier(n_estimators =100,random_state = 42)
